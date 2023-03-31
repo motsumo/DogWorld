@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainPageComponent } from './core/main-page/main-page.component';
+import { BreedsListComponent } from './shared/breeds-list/breeds-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/main', pathMatch: 'full' },
-  { path: 'main', component: MainPageComponent },
+  { path: '', redirectTo: '/breeds-list', pathMatch: 'full' },
+  { path: 'breeds-list', component: BreedsListComponent },
 ];
 
 @NgModule({

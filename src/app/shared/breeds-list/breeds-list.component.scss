@@ -1,0 +1,51 @@
+.search input {
+    margin: 1rem 0;
+  }
+  
+  .breeds {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .breeds li {
+    display: grid;
+    grid-template-columns: min-content max-content 1fr max-content max-content;
+    grid-template-areas: "badge name . edit delete";
+    margin: 1rem 0;
+    align-items: center;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+  
+  .breedes li .badge {
+    grid-area: badge;
+  }
+  
+  .breeds li .name {
+    grid-area: name;
+  }
+  
+  .breeds .badge {
+    padding: 0.5rem 0.6rem;
+    color: white;
+    background-color: #435B60;
+    margin-right: 0.8rem;
+    border-radius: 4px 0 0 4px;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+  }
+  
+  @media (max-width: 550px) {
+    .breeds li {
+      grid-template-columns: min-content 1fr 1fr;
+      grid-template-rows: 2rem max-content;
+      grid-template-areas:
+        "badge name name"
+        "badge edit delete";
+    }
+  
+    .breeds li .name {
+      margin-top: 0.3rem;
+    }
+  }
