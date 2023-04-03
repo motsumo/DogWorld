@@ -10,6 +10,8 @@ import { LayoutComponent } from './core/layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BreedsListComponent } from './shared/breeds-list/breeds-list.component';
 import { PawIconComponent } from './core/Icons/paw-icon/paw-icon.component';
+import { BreedInfoComponent } from './core/breed-info/breed-info.component';
+import { PaginationComponent } from './core/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { PawIconComponent } from './core/Icons/paw-icon/paw-icon.component';
     FooterComponent,
     PawIconComponent,
     BreedsListComponent,
+    BreedInfoComponent,
+    PaginationComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, NgbModule],
   providers: [],

@@ -16,12 +16,16 @@ const httpOptions = {
 
 @Injectable()
 export class BreedsService {
-  breedsUrl = `${CONSTANTS.API_URL}/breeds?limit=10&page=0`; // URL to web api
+  breedsUrl = `${CONSTANTS.API_URL}/breeds`; // URL to web api
 
   constructor(private http: HttpClient) {}
 
   /** GET breeds from the server */
-  getBreeds(): Observable<Breed[]> {
-    return this.http.get<Breed[]>(this.breedsUrl);
+  getBreeds(page: number): Observable<Breed[]> {
+    return this.http.get<Breed[]>(`${this.breedsUrl}?limit=12&page=${page}`);
+  }
+
+  getAllBreeds(): Observable<Breed[]> {
+    return this.http.get<[]>(this.breedsUrl);
   }
 }

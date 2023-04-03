@@ -10,14 +10,34 @@ import { BreedsService } from '../services/breeds.service';
 })
 export class BreedsListComponent implements OnInit {
   breeds: Breed[] = [];
+  allBreeds: Breed[] = [];
+  countOfPages: number[] = [];
+  page = 0;
 
   constructor(private breedsService: BreedsService) {}
 
   ngOnInit() {
-    this.getBreeds();
+    this.getBreeds(this.page);
+    this.getAllBreeds();
   }
 
-  getBreeds(): void {
-    this.breedsService.getBreeds().subscribe(breeds => (this.breeds = breeds));
+  getBreeds(page: number): void {
+    this.breedsService
+      .getBreeds(page)
+      .subscribe(breeds => (this.breeds = breeds));
+  }
+
+  getAllBreeds(): void {
+    this.breedsService.getAllBreeds().subscribe(breeds => {
+      this.allBreeds = breeds;
+      this.countOfPages = Array(Math.ceil(breeds.length / 12))
+        .fill(0)
+        .map((x, i) => i);
+    });
+  }
+
+  changePage(page: number) {
+    this.page = page;
+    this.getBreeds(page);
   }
 }
