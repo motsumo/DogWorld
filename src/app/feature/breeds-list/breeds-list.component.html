@@ -1,0 +1,8 @@
+<div class="card-group">
+  <app-breed-info *ngFor="let breed of breeds" [breed]="breed" />
+  <app-pagination
+    class="m-auto"
+    [countOfPages]="countOfPages"
+    [activePage]="page"
+    (changePageEvent)="changePage($event)" />
+</div>

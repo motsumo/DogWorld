@@ -1,0 +1,26 @@
+<nav>
+  <div class="pagination justify-content-center btn-group" role="group">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="changePage(activePage - 1)"
+      [disabled]="activePage === 0">
+      Previous
+    </button>
+    <button
+      type="button"
+      class="btn"
+      [ngClass]="pageNumber === activePage ? 'btn-primary' : 'btn-light'"
+      *ngFor="let pageNumber of countOfPages"
+      (click)="changePage(pageNumber)">
+      {{ pageNumber + 1 }}
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="changePage(activePage + 1)"
+      [disabled]="activePage === countOfPages.length - 1">
+      Next
+    </button>
+  </div>
+</nav>
