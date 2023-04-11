@@ -8,10 +8,10 @@ import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { LayoutComponent } from './core/layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BreedsListComponent } from './shared/breeds-list/breeds-list.component';
-import { PawIconComponent } from './core/Icons/paw-icon/paw-icon.component';
-import { BreedInfoComponent } from './core/breed-info/breed-info.component';
-import { PaginationComponent } from './core/pagination/pagination.component';
+import { BreedsListComponent } from './feature/breeds-list/breeds-list.component';
+import { PawIconComponent } from './shared/svg/paw-icon/paw-icon.component';
+import { BreedInfoComponent } from './feature/breeds-list/breed-info/breed-info.component';
+import { PaginationComponent } from './shared/pagination/pagination.component';
 
 @NgModule({
   declarations: [

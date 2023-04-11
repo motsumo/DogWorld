@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BreedsListComponent } from './shared/breeds-list/breeds-list.component';
+import { BreedsListComponent } from './feature/breeds-list/breeds-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/breeds-list', pathMatch: 'full' },

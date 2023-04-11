@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Breed } from '../interfaces/breed';
-import { BreedsService } from '../services/breeds.service';
+import { Breed } from '../../shared/interfaces/breed';
+import { BreedsService } from '../../shared/services/breeds.service';
 
 @Component({
   selector: 'app-breeds-list',
