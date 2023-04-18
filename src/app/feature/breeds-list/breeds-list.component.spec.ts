@@ -1,42 +1,52 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { BreedsListComponent } from './breeds-list.component';
 import { BreedsService } from 'src/app/shared/services/breeds.service';
-import { breedsListMock } from 'src/mocks/breeds-list-mock';
 import { of } from 'rxjs';
-import { HttpClientModule } from '@angular/common/http';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import { breedsListMock } from 'src/mocks/breeds-list-mock';
 
 describe('BreedsListComponent', () => {
   let component: BreedsListComponent;
-  let fixture: ComponentFixture<BreedsListComponent>;
-  let fakeBreedsService: BreedsService;
 
   beforeEach(async () => {
-    fakeBreedsService = jasmine.createSpyObj<BreedsService>('BreedsService', {
-      getBreeds: of([breedsListMock[0]]),
-      getAllBreeds: of(breedsListMock),
-    });
+    const fakeBreedsService = jasmine.createSpyObj<BreedsService>([
+      'getAllBreeds',
+      'getBreeds',
+    ]);
+    fakeBreedsService.getBreeds.and.returnValue(of([breedsListMock[0]]));
+    fakeBreedsService.getAllBreeds.and.returnValue(of(breedsListMock));
 
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule],
-      declarations: [BreedsListComponent],
       providers: [{ provide: BreedsService, useValue: fakeBreedsService }],
-      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BreedsListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new BreedsListComponent(fakeBreedsService);
+    component.ngOnInit();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('renders a BreedInfoComponent', () => {
-    const el = fixture.debugElement.query(By.css('app-breed-info'));
-    expect(el).toBeTruthy();
+  it('shoud have rigth page', () => {
+    expect(component.page).toBe(0);
+  });
+
+  it('shoud get right allBreeds', () => {
+    expect(component.allBreeds.length).toBe(14);
+  });
+
+  it('shoud get right breeds', () => {
+    expect(component.breeds.length).toBe(1);
+  });
+
+  it('shoud get right countOfPages', () => {
+    expect(component.countOfPages.length).toBe(2);
+  });
+
+  it('shoud change the page', () => {
+    component.changePage(2);
+
+    expect(component.page).toBe(2);
   });
 });
