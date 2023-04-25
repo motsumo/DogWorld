@@ -1,6 +1,7 @@
 <button class="btn btn-lg btn-outline-primary" (click)="open(addNewBreedModal)">
   Add new breed
 </button>
+
 <ng-template #addNewBreedModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="addNewBreedModalLabel">Add new breed</h4>
@@ -11,7 +12,7 @@
       (click)="modal.dismiss()"></button>
   </div>
   <div class="modal-body">
-    <app-add-new-breed-form />
+    <ng-content></ng-content>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close()">
