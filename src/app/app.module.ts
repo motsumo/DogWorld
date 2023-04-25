@@ -9,6 +9,9 @@ import { BreedsListComponent } from './feature/breeds-list/breeds-list.component
 import { BreedInfoComponent } from './feature/breeds-list/breed-info/breed-info.component';
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { CoreModule } from './core/core.module';
+import { AddNewBreedFormComponent } from './feature/add-new-breed-form/add-new-breed-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalWindowComponent } from './feature/modal-window/modal-window.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,8 @@ import { CoreModule } from './core/core.module';
     BreedsListComponent,
     BreedInfoComponent,
     PaginationComponent,
+    AddNewBreedFormComponent,
+    ModalWindowComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +28,8 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     NgbModule,
     CoreModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
