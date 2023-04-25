@@ -3,9 +3,6 @@
   <app-pagination
     class="m-auto"
     [countOfPages]="countOfPages"
-    [activePage]="page"
+    [activePage]="activePage"
     (changePageEvent)="changePage($event)" />
 </div>
-<app-modal-window>
-  <app-add-new-breed-form />
-</app-modal-window>

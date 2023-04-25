@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Breed } from '../../shared/interfaces/breed';
-import { BreedsService } from '../../shared/services/breeds.service';
+import { Breed } from 'src/app/shared/interfaces/breed';
+import { BreedsService } from 'src/app/shared/services/breeds.service';
 
 @Component({
-  selector: 'app-breeds-list',
-  templateUrl: './breeds-list.component.html',
-  providers: [BreedsService],
-  styleUrls: ['./breeds-list.component.scss'],
+  selector: 'app-breeds-page',
+  templateUrl: './breeds-page.component.html',
+  styleUrls: ['./breeds-page.component.scss'],
 })
-export class BreedsListComponent implements OnInit {
+export class BreedsPageComponent implements OnInit {
   breeds: Breed[] = [];
   allBreeds: Breed[] = [];
   countOfPages: number[] = [];
   page = 0;
+  addNewBreedModalLabel = 'Add New Breed';
 
   constructor(private breedsService: BreedsService) {}
 

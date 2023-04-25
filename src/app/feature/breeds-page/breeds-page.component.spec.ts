@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BreedsListComponent } from './breeds-list.component';
 import { BreedsService } from 'src/app/shared/services/breeds.service';
 import { of } from 'rxjs';
 import { breedsListMock } from 'src/mocks/breeds-list-mock';
+import { BreedsPageComponent } from './breeds-page.component';
 
-describe('BreedsListComponent', () => {
-  let component: BreedsListComponent;
+describe('BreedsPageComponent', () => {
+  let component: BreedsPageComponent;
 
   beforeEach(async () => {
     const fakeBreedsService = jasmine.createSpyObj<BreedsService>([
@@ -20,7 +20,7 @@ describe('BreedsListComponent', () => {
       providers: [{ provide: BreedsService, useValue: fakeBreedsService }],
     }).compileComponents();
 
-    component = new BreedsListComponent(fakeBreedsService);
+    component = new BreedsPageComponent(fakeBreedsService);
     component.ngOnInit();
   });
 

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BreedsListComponent } from './feature/breeds-list/breeds-list.component';
+import { BreedsPageComponent } from './feature/breeds-page/breeds-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/breeds-list', pathMatch: 'full' },
-  { path: 'breeds-list', component: BreedsListComponent },
+  { path: 'breeds-list', component: BreedsPageComponent },
 ];
 
 @NgModule({

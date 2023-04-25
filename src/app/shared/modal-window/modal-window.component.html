@@ -1,10 +1,12 @@
-<button class="btn btn-lg btn-outline-primary" (click)="open(addNewBreedModal)">
-  Add new breed
+<button class="btn btn-lg btn-outline-primary" (click)="open(modal)">
+  {{ openModalButtonText }}
 </button>
 
-<ng-template #addNewBreedModal let-modal>
+<ng-template #modal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="addNewBreedModalLabel">Add new breed</h4>
+    <h4 class="modal-title" id="modalLabel">
+      {{ modalHeader }}
+    </h4>
     <button
       type="button"
       class="btn-close"
@@ -16,7 +18,7 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close()">
-      Add new beed
+      {{ closeButtonText }}
     </button>
   </div>
 </ng-template>

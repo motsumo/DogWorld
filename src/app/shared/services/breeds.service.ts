@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { Breed } from '../interfaces/breed';
 import { CONSTANTS } from '../constants';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class BreedsService {
   constructor(private http: HttpClient) {}
 

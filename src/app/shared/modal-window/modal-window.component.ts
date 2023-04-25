@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,6 +7,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal-window.component.scss'],
 })
 export class ModalWindowComponent {
+  @Input() modalHeader = '';
+  @Input() openModalButtonText = 'Open Modal';
+  @Input() closeButtonText = 'Close';
+
   constructor(private modalService: NgbModal) {}
 
   open(content: any) {

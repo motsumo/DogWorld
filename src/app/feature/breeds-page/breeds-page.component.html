@@ -1,0 +1,11 @@
+<app-breeds-list
+  [breeds]="breeds"
+  [countOfPages]="countOfPages"
+  [activePage]="page"
+  (changePageEvent)="changePage($event)" />
+<app-modal-window
+  [modalHeader]="addNewBreedModalLabel"
+  [openModalButtonText]="addNewBreedModalLabel"
+  [closeButtonText]="addNewBreedModalLabel">
+  <app-add-new-breed-form />
+</app-modal-window>
