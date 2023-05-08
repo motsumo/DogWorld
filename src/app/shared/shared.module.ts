@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PaginationComponent } from './pagination/pagination.component';
-import { ModalWindowComponent } from './modal-window/modal-window.component';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
-  declarations: [ModalWindowComponent, PaginationComponent],
-  imports: [CommonModule],
-  exports: [ModalWindowComponent, PaginationComponent],
+  declarations: [],
+  imports: [CommonModule, ComponentsModule],
+  exports: [],
 })
 export class SharedModule {}

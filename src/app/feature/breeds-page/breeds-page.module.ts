@@ -6,6 +6,7 @@ import { BreedsListComponent } from './breeds-list/breeds-list.component';
 import { AddNewBreedFormComponent } from './add-new-breed-form/add-new-breed-form.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BreedsListComponent,
     AddNewBreedFormComponent,
   ],
-  imports: [ReactiveFormsModule, FormsModule, CommonModule, SharedModule],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    CommonModule,
+    SharedModule,
+    ComponentsModule,
+  ],
   exports: [BreedsPageComponent],
 })
 export class BreedsPageModule {}

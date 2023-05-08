@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { BreedsPageModule } from './feature/breeds-page/breeds-page.module';
 import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,8 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     BreedsPageModule,
     SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

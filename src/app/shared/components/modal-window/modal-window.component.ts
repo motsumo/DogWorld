@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -10,12 +10,19 @@ export class ModalWindowComponent {
   @Input() modalHeader = '';
   @Input() openModalButtonText = 'Open Modal';
   @Input() closeButtonText = 'Close';
+  @Input() ariaLabelledBy = '';
+  @Input() disabled = false;
+  @Output() closeModal = new EventEmitter();
 
   constructor(private modalService: NgbModal) {}
 
   open(content: any) {
     this.modalService.open(content, {
-      ariaLabelledBy: 'addNewBreedModalLabel',
+      ariaLabelledBy: this.ariaLabelledBy,
     });
+  }
+
+  close() {
+    this.closeModal.emit();
   }
 }

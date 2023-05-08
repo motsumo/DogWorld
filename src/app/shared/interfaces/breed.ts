@@ -23,3 +23,10 @@ export interface Breed {
     url: string;
   };
 }
+
+export interface AddNewBreedFormField {
+  name: string;
+  inputLabel: string;
+  placeholder: string;
+  required: boolean;
+}
