@@ -1,15 +1,23 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { BreedsState } from './breeds.state';
-import { Breed } from 'src/app/shared/interfaces/breed';
 
 export const selectBreeds = createFeatureSelector<BreedsState>('breeds');
+export const selectAllBreeds = createFeatureSelector<BreedsState>('allBreeds');
 
-export const selectBreedsItems = createSelector(
+export const selectAllBreedsItems = createSelector(
+  selectAllBreeds,
+  (state: BreedsState) => state.allBreeds
+);
+
+export const selectBreedsByPage = createSelector(
   selectBreeds,
   (state: BreedsState) => state.breeds
 );
 
-export const selectBreed = (props: { id: Breed['id'] }) =>
-  createSelector(selectBreeds, breedsItems =>
-    breedsItems.find((breed: Breed) => breed.id === props.id)
-  );
+export const getCountOfPages = createSelector(
+  selectAllBreeds,
+  (state: BreedsState) =>
+    Array(Math.ceil(state.allBreeds.length / 12))
+      .fill(0)
+      .map((x, i) => i)
+);

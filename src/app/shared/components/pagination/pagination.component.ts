@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./pagination.component.scss'],
 })
 export class PaginationComponent {
-  @Input() countOfPages: number[] = [];
+  @Input() countOfPages: number[] | null = null;
   @Input() activePage = 0;
 
   @Output() changePageEvent = new EventEmitter<number>();

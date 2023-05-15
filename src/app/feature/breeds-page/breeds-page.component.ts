@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Breed } from 'src/app/shared/interfaces/breed';
-import { BreedsService } from 'src/app/shared/services/breeds.service';
-import { Store } from '@ngrx/store';
-import { selectBreedsItems } from 'src/app/core/state/breeds';
+import { Store, select } from '@ngrx/store';
+import {
+  fetchAllBreeds,
+  fetchBreedsByPage,
+  getCountOfPages,
+  selectAllBreedsItems,
+  selectBreedsByPage,
+} from 'src/app/core/state/breeds';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-breeds-page',
@@ -10,34 +16,29 @@ import { selectBreedsItems } from 'src/app/core/state/breeds';
   styleUrls: ['./breeds-page.component.scss'],
 })
 export class BreedsPageComponent implements OnInit {
-  breeds: Breed[] = [];
-  allBreeds: Breed[] = [];
-  countOfPages: number[] = [];
+  allBreedsItems$: Observable<Breed[]> = of([]);
+  breeds$: Observable<Breed[]> = of([]);
+  countOfPages$: Observable<number[]> = of([]);
   page = 0;
   addNewBreedModalLabel = 'Add New Breed';
 
-  constructor(private breedsService: BreedsService, private store: Store) {}
-
-  breedsItems$ = this.store.select(selectBreedsItems);
-
-  ngOnInit() {
-    this.getBreeds(this.page);
-    this.getAllBreeds();
+  constructor(private store: Store) {
+    this.store.dispatch(fetchAllBreeds());
   }
 
-  getBreeds(page: number): void {
-    this.breedsService
-      .getBreeds(page)
-      .subscribe(breeds => (this.breeds = breeds));
+  async ngOnInit() {
+    this.getAllBreeds();
+    this.getBreeds(this.page);
   }
 
   getAllBreeds(): void {
-    this.breedsService.getAllBreeds().subscribe(breeds => {
-      this.allBreeds = breeds;
-      this.countOfPages = Array(Math.ceil(breeds.length / 12))
-        .fill(0)
-        .map((x, i) => i);
-    });
+    this.allBreedsItems$ = this.store.pipe(select(selectAllBreedsItems));
+    this.countOfPages$ = this.store.pipe(select(getCountOfPages));
+  }
+
+  getBreeds(page: number): void {
+    this.store.dispatch(fetchBreedsByPage({ page: page }));
+    this.breeds$ = this.store.pipe(select(selectBreedsByPage));
   }
 
   changePage(page: number) {

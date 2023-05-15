@@ -19,9 +19,7 @@ export class AddNewBreedFormComponent implements OnInit {
   @Output() closeModal = new EventEmitter();
 
   // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method, @typescript-eslint/no-empty-function
-  ngOnInit(): void {
-    console.log(this.form);
-  }
+  ngOnInit(): void {}
 
   addNewBreedFormModel: Array<AddNewBreedFormField> = addNewBreedFormModel;
 

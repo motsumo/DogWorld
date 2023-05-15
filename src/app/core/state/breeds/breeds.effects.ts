@@ -14,12 +14,30 @@ export class BreedsEffects {
 
   fetchBreeds$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(BreedsActions.appLoaded.type, BreedsActions.addBreedItemSuccess),
+      ofType(BreedsActions.fetchAllBreeds),
       switchMap(() =>
         this.apiService.getAllBreeds().pipe(
-          map(breeds => BreedsActions.fetchBreedSuccess({ breeds: breeds })),
+          map(allBreeds =>
+            BreedsActions.fetchBreedSuccess({ allBreeds: allBreeds })
+          ),
           catchError(error =>
             of(BreedsActions.fetchBreedFailed({ error: error }))
+          )
+        )
+      )
+    )
+  );
+
+  fetchBreedsByPage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BreedsActions.fetchBreedsByPage),
+      switchMap((action: any) =>
+        this.apiService.getBreeds(action.page).pipe(
+          map(breeds =>
+            BreedsActions.fetchBreedsByPageSuccess({ breeds: breeds })
+          ),
+          catchError(error =>
+            of(BreedsActions.fetchBreedsByPageFailed({ error: error }))
           )
         )
       )

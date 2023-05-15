@@ -7,9 +7,9 @@ import { Breed } from 'src/app/shared/interfaces/breed';
   styleUrls: ['./breeds-list.component.scss'],
 })
 export class BreedsListComponent {
-  @Input() countOfPages: number[] = [];
+  @Input() countOfPages: number[] | null = null;
   @Input() activePage = 0;
-  @Input() breeds: Breed[] = [];
+  @Input() breeds: Breed[] | null = null;
 
   @Output() changePageEvent = new EventEmitter<number>();
 

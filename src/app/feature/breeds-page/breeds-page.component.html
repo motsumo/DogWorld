@@ -1,6 +1,6 @@
 <app-breeds-list
-  [breeds]="breeds"
-  [countOfPages]="countOfPages"
+  [breeds]="breeds$ | async"
+  [countOfPages]="countOfPages$ | async"
   [activePage]="page"
   (changePageEvent)="changePage($event)" />
 <app-modal-window

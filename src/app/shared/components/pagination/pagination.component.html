@@ -1,4 +1,4 @@
-<nav>
+<nav [ngClass]="countOfPages && countOfPages.length > 1 ? '' : 'd-none'">
   <div class="pagination justify-content-center btn-group" role="group">
     <button
       type="button"
@@ -19,7 +19,9 @@
       type="button"
       class="btn btn-primary"
       (click)="changePage(activePage + 1)"
-      [disabled]="activePage === countOfPages.length - 1">
+      [disabled]="
+        countOfPages ? activePage === countOfPages.length - 1 : false
+      ">
       Next
     </button>
   </div>

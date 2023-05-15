@@ -4,7 +4,14 @@ import { initialState, BreedsState } from './breeds.state';
 
 const BreedsReducer = createReducer(
   initialState,
-  on(breedsActions.fetchBreedSuccess, (state, { breeds }) => ({
+  on(breedsActions.fetchBreedSuccess, (state, { allBreeds }) => ({
+    ...state,
+    allBreeds: allBreeds,
+    pages: Array(Math.ceil(allBreeds.length / 12))
+      .fill(0)
+      .map((x, i) => i),
+  })),
+  on(breedsActions.fetchBreedsByPageSuccess, (state, { breeds }) => ({
     ...state,
     breeds: breeds,
   })),

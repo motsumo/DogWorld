@@ -3,13 +3,30 @@ import { Breed } from 'src/app/shared/interfaces/breed';
 
 export const appLoaded = createAction('[App] App Loaded');
 
+export const fetchAllBreeds = createAction('[Breed API] Fetch Breeds');
+
 export const fetchBreedSuccess = createAction(
   '[Breed API] Fetch Breed Success',
-  props<{ breeds: Breed[] }>()
+  props<{ allBreeds: Breed[] }>()
 );
 
 export const fetchBreedFailed = createAction(
   '[Breed API] Fetch Breed Failed',
+  props<{ error: any }>()
+);
+
+export const fetchBreedsByPage = createAction(
+  '[Breed API] Fetch Breed By Page ',
+  props<{ page: number }>()
+);
+
+export const fetchBreedsByPageSuccess = createAction(
+  '[Breed API] Fetch Breed By Page Success',
+  props<{ breeds: Breed[] }>()
+);
+
+export const fetchBreedsByPageFailed = createAction(
+  '[Breed API] Fetch Breed By Page Failed',
   props<{ error: any }>()
 );
 
