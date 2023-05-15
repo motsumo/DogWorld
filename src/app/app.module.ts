@@ -9,6 +9,10 @@ import { CoreModule } from './core/core.module';
 import { BreedsPageModule } from './feature/breeds-page/breeds-page.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { metaReducers, reducers } from './core/state';
+import { EffectsModule } from '@ngrx/effects';
+import { BreedsEffects } from './core/state/breeds';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +26,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+    }),
+    EffectsModule.forRoot([BreedsEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
