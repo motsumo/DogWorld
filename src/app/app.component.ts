@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { appLoaded } from './core/state/breeds';
+import { appLoaded } from './store/breeds';
 
 @Component({
   selector: 'app-root',

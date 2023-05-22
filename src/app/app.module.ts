@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,9 +10,12 @@ import { BreedsPageModule } from './feature/breeds-page/breeds-page.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
-import { metaReducers, reducers } from './core/state';
 import { EffectsModule } from '@ngrx/effects';
-import { BreedsEffects } from './core/state/breeds';
+import { BreedsEffects } from './store/breeds';
+import { SpinnerEffects } from './store/spinner';
+import { metaReducers, reducers } from './store';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,9 +32,12 @@ import { BreedsEffects } from './core/state/breeds';
     StoreModule.forRoot(reducers, {
       metaReducers,
     }),
-    EffectsModule.forRoot([BreedsEffects]),
+    BrowserAnimationsModule,
+    EffectsModule.forRoot([BreedsEffects, SpinnerEffects]),
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

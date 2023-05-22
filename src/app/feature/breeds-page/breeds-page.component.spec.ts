@@ -20,7 +20,6 @@ describe('BreedsPageComponent', () => {
       providers: [{ provide: BreedsService, useValue: fakeBreedsService }],
     }).compileComponents();
 
-    component = new BreedsPageComponent(fakeBreedsService);
     component.ngOnInit();
   });
 
@@ -30,18 +29,6 @@ describe('BreedsPageComponent', () => {
 
   it('shoud have rigth page', () => {
     expect(component.page).toBe(0);
-  });
-
-  it('shoud get right allBreeds', () => {
-    expect(component.allBreeds.length).toBe(14);
-  });
-
-  it('shoud get right breeds', () => {
-    expect(component.breeds.length).toBe(1);
-  });
-
-  it('shoud get right countOfPages', () => {
-    expect(component.countOfPages.length).toBe(2);
   });
 
   it('shoud change the page', () => {

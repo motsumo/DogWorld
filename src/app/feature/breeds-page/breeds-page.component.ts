@@ -7,8 +7,9 @@ import {
   getCountOfPages,
   selectAllBreedsItems,
   selectBreedsByPage,
-} from 'src/app/core/state/breeds';
+} from 'src/app/store/breeds';
 import { Observable, of } from 'rxjs';
+import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-breeds-page',
@@ -31,13 +32,13 @@ export class BreedsPageComponent implements OnInit {
     this.getBreeds(this.page);
   }
 
-  getAllBreeds(): void {
+  getAllBreeds() {
     this.allBreedsItems$ = this.store.pipe(select(selectAllBreedsItems));
     this.countOfPages$ = this.store.pipe(select(getCountOfPages));
   }
 
-  getBreeds(page: number): void {
-    this.store.dispatch(fetchBreedsByPage({ page: page }));
+  async getBreeds(page: number) {
+    await this.store.dispatch(fetchBreedsByPage({ page: page }));
     this.breeds$ = this.store.pipe(select(selectBreedsByPage));
   }
 

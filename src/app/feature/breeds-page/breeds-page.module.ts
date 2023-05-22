@@ -7,6 +7,7 @@ import { AddNewBreedFormComponent } from './add-new-breed-form/add-new-breed-for
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
     FormsModule,
     CommonModule,
     SharedModule,
+    NgxSpinnerModule,
     ComponentsModule,
   ],
   exports: [BreedsPageComponent],

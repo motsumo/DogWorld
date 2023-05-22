@@ -1,5 +1,10 @@
 @import 'bootstrap/scss/bootstrap';
+@import "../../node_modules/ngx-spinner/animations/pacman.css";
 
 .container-margin-top{
    margin-top: 6rem
+}
+
+.m-10 {
+   margin: $spacer * 6;
 }
